@@ -43,14 +43,7 @@ export function compareRanks(
   const cleanScoreA = cleanScore(scoreA);
   const cleanScoreB = cleanScore(scoreB);
 
-  const rankIndexA = rankToIndex.get(rankA) ?? 0;
-  const rankIndexB = rankToIndex.get(rankB) ?? 0;
-
-  if (rankIndexA === rankIndexB) {
-    return cleanScoreB - cleanScoreA; // Compare LP within the same rank
-  }
-
-  return cleanScoreA - cleanScoreB; // Compare ranks
+  return cleanScoreB - cleanScoreA;
 }
 
 export const getURL = (id: string) =>

@@ -42,7 +42,8 @@ export async function checkIfPlayerExist(id: string): Promise<boolean> {
   const page = await browser.newPage();
   await page.goto(getURL(id));
   const playerNotFound = page.getByText("Player not found");
-  if (!(await playerNotFound.isVisible())) {
+  await page.screenshot({ path: `screens/${id}.png` });
+  if (await playerNotFound.isVisible()) {
     await browser.close();
     return false;
   }
